@@ -1,0 +1,29 @@
+.footer {
+  display: grid;
+  grid-template-columns: 1.2fr 1.1fr 0.8fr;
+  border: 1px solid var(--line);
+  margin: 80px 6vw 40px;
+}
+
+.footer > div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 32px 16px;
+}
+
+.footer > div + div {
+  border-left: 1px solid var(--line);
+}
+
+@media (max-width: 800px) {
+  .footer {
+    grid-template-columns: 1fr;
+  }
+  .footer > div + div {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}

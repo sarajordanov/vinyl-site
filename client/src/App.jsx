@@ -1,9 +1,16 @@
+import { BrowserRouter } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 export default function App() {
   return (
-    <main style={{ padding: "6vw" }}>
-      <h1>VINYL.</h1>
-      <p style={{ color: "var(--pink)" }}>Special edition</p>
-      <p>Foundation ready: colors and fonts from the original design.</p>
-    </main>
+    <BrowserRouter>
+      <Header />
+      <main style={{ padding: "6vw", minHeight: "50vh" }}>
+        <h1>VINYL.</h1>
+        <p>The pages will go here.</p>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }
