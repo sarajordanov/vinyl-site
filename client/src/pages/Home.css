@@ -249,3 +249,33 @@
     width: 260px;
   }
 }
+
+.about {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card {
+  position: relative;
+  z-index: 1;
+}
+
+.buddy {
+  position: absolute;
+  width: clamp(110px, 16vw, 240px);
+}
+
+.b1 { left: 5%; top: 12%; transform: rotate(-10deg); }
+.b2 { right: 6%; top: 18%; width: clamp(90px, 13vw, 200px); transform: rotate(12deg) scaleX(-1); }
+.b3 { left: 20%; bottom: 6%; width: clamp(70px, 9vw, 130px); transform: rotate(8deg); }
+
+@media (max-width: 800px) {
+  .b2,
+  .b3 {
+    display: none;
+  }
+  .b1 {
+    top: 2%;
+    width: 90px;
+  }
+}

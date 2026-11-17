@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import AlbumCard from "../components/AlbumCard";
 import "./Home.css";
 import TicketSticker from "../components/TicketSticker";
+import StarBuddy from "../components/StarBuddy";
 
 // A decorative vinyl record, drawn with SVG
 function Disc({ className, label }) {
@@ -100,7 +101,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="about" id="about">
+            <section className="about" id="about">
+        <StarBuddy className="buddy b1" />
+        <StarBuddy className="buddy b2" />
+        <StarBuddy className="buddy b3" />
+
         <div className="about-card">
           <h2>Who We Are</h2>
           <p>
@@ -108,10 +113,10 @@ export default function Home() {
             passionate about preserving vinyl culture and providing an engaging
             shopping experience that reflects the artistic essence of urban style.
           </p>
-          <Link to="/#contact" className="btn btn-lime">Get in Touch</Link>
+          <Link to="/#contact" className="btn btn-black">Get in Touch</Link>
         </div>
       </section>
-
+      
       <section className="drops">
         <div className="ribbon">
           <h2>Exclusive Vinyl Drops</h2>
