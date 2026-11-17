@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import AlbumCard from "../components/AlbumCard";
 import "./Home.css";
+import TicketSticker from "../components/TicketSticker";
 
 // A decorative vinyl record, drawn with SVG
 function Disc({ className, label }) {
@@ -116,7 +117,7 @@ export default function Home() {
           <h2>Exclusive Vinyl Drops</h2>
         </div>
         <div className="drops-body">
-          <Disc className="d1" label="#b7cf4f" />
+          <TicketSticker className="ticket" />
           <Disc className="d2" label="#ff5e33" />
           <p>
             Don&apos;t miss out on our latest vinyl releases that showcase the

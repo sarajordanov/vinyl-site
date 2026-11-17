@@ -233,3 +233,19 @@
     display: none;
   }
 }
+
+
+.ticket {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  width: clamp(180px, 24vw, 340px);
+  transform: rotate(-8deg);
+}
+
+@media (max-width: 800px) {
+  .ticket {
+    position: static;
+    width: 260px;
+  }
+}
