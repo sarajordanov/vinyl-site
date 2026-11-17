@@ -279,3 +279,73 @@
     width: 90px;
   }
 }
+
+.record {
+  position: absolute;
+  z-index: 0;
+}
+
+.record svg {
+  display: block;
+  width: 100%;
+  animation: spin 14s linear infinite;
+}
+
+/* The record sits in the middle, with the text on top */
+.about {
+  display: grid;
+  place-items: center;
+  min-height: min(96vw, 860px);
+}
+
+.record-about {
+  left: 50%;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  width: min(86vw, 760px);
+  translate: -50% -50%;
+}
+
+.about-card {
+  background: none;
+  clip-path: none;
+  min-height: 0;
+  padding: 0;
+  gap: 20px;
+  max-width: min(52vw, 420px);
+}
+
+.about-card h2,
+.about-card p {
+  color: var(--paper);
+}
+
+.about-card p {
+  font-size: 15px;
+}
+
+@media (max-width: 800px) {
+  .record-about {
+    width: 120vw;
+  }
+  .about-card {
+    max-width: 76vw;
+  }
+  .about-card p {
+    font-size: 14px;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* People who prefer less motion get a still record */
+@media (prefers-reduced-motion: reduce) {
+  .record svg {
+    animation: none;
+  }
+}
