@@ -4,22 +4,24 @@ import "./Header.css";
 export default function Header() {
   return (
     <header className="header">
-      <Link to="/" className="logo" aria-label="VINYL home">
-        <svg viewBox="0 0 60 60" width="48" height="48" fill="none" stroke="currentColor">
-          <rect x="6" y="6" width="48" height="48" />
-          <circle cx="30" cy="30" r="22" />
-          <circle cx="30" cy="30" r="2" />
-          <circle cx="30" cy="30" r="29" className="logo-ring" />
-        </svg>
-        <b>VINYL.</b>
-      </Link>
+      <Link to="/" className="logo">VINYL.</Link>
 
       <nav className="nav">
-        <NavLink to="/" end>Home</NavLink>
-        <NavLink to="/store">Store</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/store">Shop All</NavLink>
+        <Link to="/#contact">Contact</Link>
+        <Link to="/#about">About</Link>
       </nav>
+
+      <div className="header-actions">
+        <Link to="/account">Account</Link>
+        <Link to="/cart" aria-label="Cart, 0 items">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <path d="M3 4h2l2.4 11h10.2L20 7H6" />
+            <circle cx="9" cy="19" r="1.5" />
+            <circle cx="17" cy="19" r="1.5" />
+          </svg>
+        </Link>
+      </div>
     </header>
   );
 }
