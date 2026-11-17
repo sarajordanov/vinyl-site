@@ -349,3 +349,20 @@
     animation: none;
   }
 }
+
+/* The "Get in Touch" button: cream first, orange on hover */
+.about-card .btn {
+  background: var(--paper);
+  color: var(--black);
+}
+
+.about-card .btn:hover {
+  background: var(--orange);
+  color: var(--paper);
+}
+
+/* The "Shop Now" button: cream on hover */
+.drops-body .btn:hover {
+  background: var(--paper);
+  color: var(--black);
+}

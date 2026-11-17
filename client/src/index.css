@@ -50,7 +50,7 @@ a {
   font: inherit;
   font-weight: 500;
   cursor: pointer;
-  transition: transform 0.15s;
+    transition: transform 0.15s, background-color 0.2s, color 0.2s;
 }
 
 .btn:hover {
@@ -60,6 +60,11 @@ a {
 .btn-cream {
   background: var(--paper);
   color: var(--black);
+}
+
+.btn-cream:hover {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 .btn-lime {
