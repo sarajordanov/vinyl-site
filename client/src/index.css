@@ -68,8 +68,8 @@ a {
 }
 
 .btn-lime {
-  background: var(--lime);
-  color: var(--black);
+  background: var(--black);
+  color: #fff;
 }
 
 .btn-black {

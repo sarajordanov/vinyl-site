@@ -221,3 +221,8 @@
     transition: none;
   }
 }
+
+/* Space between the artist dropdown and the clear button */
+.sidebar .btn {
+  margin-top: 25px;
+}

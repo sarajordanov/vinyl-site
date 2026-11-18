@@ -100,3 +100,11 @@
     transition: transform 0.2s ease, margin 0.2s ease;
   }
 }
+
+
+/* A menu that opens upward */
+.dd-disc__sub--up {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
+
