@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./PriceSlider.css";
 
 // A price slider with two handles. min/max are the ends of the whole track,
-// low/high are the current choice. onCommit runs when you let go of a handle.
+// low/high are the current choice. onCommit runs a moment after you stop moving a handle.
 export default function PriceSlider({ min, max, low, high, onCommit }) {
   const [open, setOpen] = useState(true);
   const [range, setRange] = useState([low, high]);
@@ -13,6 +13,14 @@ export default function PriceSlider({ min, max, low, high, onCommit }) {
     setRange([low, high]);
   }, [low, high]);
 
+  // Wait until the handle stops moving, then tell the page
+  useEffect(() => {
+    if (a === low && b === high) return;
+    const timer = setTimeout(() => onCommit(a, b), 300);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [a, b]);
+
   const percent = (value) => ((value - min) / (max - min)) * 100;
 
   function moveLow(event) {
@@ -22,8 +30,6 @@ export default function PriceSlider({ min, max, low, high, onCommit }) {
   function moveHigh(event) {
     setRange([a, Math.max(Number(event.target.value), a)]);
   }
-
-  const commit = () => onCommit(a, b);
 
   return (
     <div className="price">
@@ -57,8 +63,6 @@ export default function PriceSlider({ min, max, low, high, onCommit }) {
               value={a}
               className={a > (min + max) / 2 ? "on-top" : ""}
               onChange={moveLow}
-              onPointerUp={commit}
-              onKeyUp={commit}
             />
             <input
               type="range"
@@ -68,8 +72,6 @@ export default function PriceSlider({ min, max, low, high, onCommit }) {
               step="1"
               value={b}
               onChange={moveHigh}
-              onPointerUp={commit}
-              onKeyUp={commit}
             />
           </div>
 
