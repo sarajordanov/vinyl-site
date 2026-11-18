@@ -100,7 +100,7 @@ export default function Store() {
         <aside className="sidebar">
           <input
             type="search"
-            className="pill"
+            className="search-input"
             aria-label="Search by title or artist"
             placeholder="Search title or artist"
             value={q}
