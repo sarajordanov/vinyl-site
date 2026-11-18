@@ -1,9 +1,13 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Header.css";
 
 export default function Header() {
+  // Orange on the home page, cream on every other page
+  const { pathname } = useLocation();
+  const tone = pathname === "/" ? "orange" : "paper";
+
   return (
-    <header className="header">
+    <header className={`header header--${tone}`}>
       <Link to="/" className="logo">VINYL.</Link>
 
       <nav className="nav">
