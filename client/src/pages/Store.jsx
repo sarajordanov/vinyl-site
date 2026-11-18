@@ -152,7 +152,7 @@ export default function Store() {
           )}
 
                     <Dropdown
-            prefix="Artist:"
+            
             direction="up"
             value={artist}
             onChange={(value) => updateFilter("artist", value)}

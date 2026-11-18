@@ -32,7 +32,7 @@
   padding-bottom: 12px;
   margin-top: 12px;
   font-size: 24px;
-  color: var(--orange);
+  color: var(--black);
   border-bottom: 1px solid rgba(239, 231, 211, 0.3);
 }
 
@@ -91,7 +91,7 @@
   margin-bottom: 40px;
   font-size: clamp(40px, 5vw, 64px);
   line-height: 1;
-  color: var(--orange);
+  color: var(--black);
 }
 
 .results-bar {
@@ -225,4 +225,15 @@
 /* Space between the artist dropdown and the clear button */
 .sidebar .btn {
   margin-top: 25px;
+}
+
+
+/* Space between the price slider and the artist dropdown */
+.sidebar .dd-disc {
+  margin-top: 20px;
+}
+
+/* A visible line under the sidebar headings */
+.sidebar h2 {
+  border-bottom: 1px solid var(--black);
 }
