@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import AlbumCard from "../components/AlbumCard";
 import PriceSlider from "../components/PriceSlider";
 import "./Store.css";
+import Dropdown from "../components/DropDown";
 
 // Fetch JSON, and treat an error answer from the server as a failure
 function getJson(url) {
@@ -11,6 +12,13 @@ function getJson(url) {
     return res.json();
   });
 }
+const sortChoices = [
+  { value: "", label: "Recommended" },
+  { value: "price_asc", label: "Price: low to high" },
+  { value: "price_desc", label: "Price: high to low" },
+  { value: "title", label: "Title A-Z" },
+  { value: "newest", label: "Newest" },
+];
 
 export default function Store() {
   // The filters live in the address, e.g. /store?genre=Pop
@@ -143,20 +151,15 @@ export default function Store() {
             />
           )}
 
-          <div className="filter-block">
-            <label htmlFor="artist">Artist</label>
-            <select
-              id="artist"
-              className="pill"
-              value={artist}
-              onChange={(e) => updateFilter("artist", e.target.value)}
-            >
-              <option value="">All artists</option>
-              {options.artists.map((a) => (
-                <option key={a} value={a}>{a}</option>
-              ))}
-            </select>
-          </div>
+                    <Dropdown
+          
+            value={artist}
+            onChange={(value) => updateFilter("artist", value)}
+            options={[
+              { value: "", label: "All artists" },
+              ...options.artists.map((name) => ({ value: name, label: name })),
+            ]}
+          />
 
           <button type="button" className="btn btn-lime" onClick={clearFilters}>
             Clear filters
@@ -173,16 +176,13 @@ export default function Store() {
                 : `${albums.length} ${albums.length === 1 ? "record" : "records"}`}
             </p>
 
-            <label className="sort">
-              Sort by:
-              <select value={sort} onChange={(e) => updateFilter("sort", e.target.value)}>
-                <option value="">Recommended</option>
-                <option value="price_asc">Price: low to high</option>
-                <option value="price_desc">Price: high to low</option>
-                <option value="title">Title A-Z</option>
-                <option value="newest">Newest</option>
-              </select>
-            </label>
+                        <Dropdown
+              prefix="Sort by:"
+              align="right"
+              value={sort}
+              onChange={(value) => updateFilter("sort", value)}
+              options={sortChoices}
+            />
           </div>
 
           {albums && albums.length === 0 && (

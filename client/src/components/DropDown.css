@@ -1,0 +1,102 @@
+.dd-disc {
+  position: relative;
+}
+
+.dd-disc__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--black);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.dd-disc__btn:hover,
+.dd-disc__btn[aria-expanded="true"] {
+  background: var(--paper-hover);
+}
+
+/* The little arrow, which flips when the menu is open */
+.dd-disc__btn::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin: -3px 2px 0 auto;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.dd-disc__btn[aria-expanded="true"]::after {
+  margin-top: 3px;
+  transform: rotate(225deg);
+}
+
+.dd-disc__btn:focus-visible,
+.dd-disc__opt:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 2px;
+}
+
+.dd-disc__sub {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 5;
+  min-width: 100%;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1.5px solid var(--black);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 16px 30px rgba(13, 6, 36, 0.25);
+}
+
+.dd-disc__sub--right {
+  right: 0;
+  left: auto;
+  min-width: 220px;
+}
+
+.dd-disc__opt {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--black);
+  font: inherit;
+  font-size: 15px;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.dd-disc__opt:hover {
+  background: var(--paper);
+}
+
+.dd-disc__opt[aria-current="true"] {
+  background: var(--lime);
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dd-disc__btn::after {
+    transition: transform 0.2s ease, margin 0.2s ease;
+  }
+}
