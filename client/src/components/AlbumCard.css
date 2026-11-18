@@ -24,3 +24,18 @@
 .card-info p {
   font-size: 14px;
 }
+
+.card-cover {
+  overflow: hidden;
+}
+
+.card-cover--image {
+  padding: 0;
+}
+
+.card-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

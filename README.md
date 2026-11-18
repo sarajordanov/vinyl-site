@@ -27,3 +27,7 @@ Then open http://localhost:5173
 ## Status
 
 Work in progress. Stage 1 (project setup) is complete.
+
+## Credits
+
+Album artwork is © its respective owners and is used for demonstration purposes only. Artwork is fetched through the iTunes Search API.
