@@ -464,3 +464,18 @@
     scale: 1;
   }
 }
+
+/* The arrow sits above the cards and is centered on the covers */
+.row-next {
+  z-index: 10;
+  top: 194px;
+}
+
+/* Hide the scroll bar, but keep the row scrollable */
+.row {
+  scrollbar-width: none;
+}
+
+.row::-webkit-scrollbar {
+  display: none;
+}
