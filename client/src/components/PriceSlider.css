@@ -1,0 +1,111 @@
+.price {
+  display: grid;
+  gap: 14px;
+}
+
+.price-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  font: inherit;
+  font-size: 20px;
+  color: var(--black);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.dual {
+  position: relative;
+  height: 28px;
+}
+
+/* The line and its filled part. They are inset by half a handle so they line up. */
+.dual-line {
+  position: absolute;
+  inset: 0 11px;
+}
+
+.dual-track,
+.dual-fill {
+  position: absolute;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+}
+
+.dual-track {
+  left: 0;
+  right: 0;
+  background: rgba(207, 117, 79, 0.35);
+}
+
+.dual-fill {
+  background: var(--orange);
+}
+
+/* The real inputs are see-through. Only the round handles are clickable. */
+.dual input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.dual input.on-top {
+  z-index: 2;
+}
+
+.dual input::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.dual input::-moz-range-track {
+  background: transparent;
+}
+
+.dual input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  background: var(--orange);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.dual input::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  background: var(--orange);
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.dual input:focus-visible::-webkit-slider-thumb {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+}
+
+.dual input:focus-visible::-moz-range-thumb {
+  outline: 3px solid var(--paper);
+  outline-offset: 2px;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: var(--black);
+}

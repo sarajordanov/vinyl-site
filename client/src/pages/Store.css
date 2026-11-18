@@ -1,0 +1,163 @@
+.store-page {
+  padding: 28px 6vw 96px;
+  color: var(--black);
+  background: var(--paper);
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.store-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 56px;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+}
+
+.sidebar h2 {
+  padding-bottom: 12px;
+  margin-top: 12px;
+  font-size: 24px;
+  color: var(--orange);
+  border-bottom: 1px solid rgba(239, 231, 211, 0.3);
+}
+
+.pill {
+  width: 100%;
+  padding: 12px 20px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--black);
+  background: #fff;
+  border: 0;
+  border-radius: 999px;
+}
+
+.browse {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.browse button {
+  padding: 4px 0;
+  font: inherit;
+  color: var(--black);
+  text-align: left;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.browse button:hover {
+  text-decoration: underline;
+}
+
+.browse button[aria-current="true"] {
+  font-weight: 600;
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+.filter-block {
+  display: grid;
+  gap: 10px;
+}
+
+.filter-block input[type="range"] {
+  width: 100%;
+  accent-color: var(--orange);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.sidebar .btn {
+  width: max-content;
+  padding: 12px 28px;
+}
+
+/* ---------- Results ---------- */
+.results h1 {
+  margin-bottom: 40px;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1;
+  color: var(--orange);
+}
+
+.results-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.sort {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sort select {
+  font: inherit;
+  color: var(--black);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.sort option,
+.pill option {
+  color: var(--black);
+  background: #fff;
+}
+
+.store-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 48px 32px;
+}
+
+.store-grid .card-info {
+  color: var(--black);
+}
+
+.store-message {
+  padding: 6vw;
+}
+
+.link-button {
+  padding: 0;
+  font: inherit;
+  color: var(--orange);
+  text-decoration: underline;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .store-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

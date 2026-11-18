@@ -14,10 +14,13 @@ const sortOptions = {
 // GET /api/albums -> a list of albums, with optional search, filters and sorting
 router.get("/", async (req, res) => {
   try {
-    const { q, genre, artist, maxPrice, sort } = req.query;
+    const { q, genre, artist, minPrice, maxPrice, sort } = req.query;
 
-    if (maxPrice && Number.isNaN(Number(maxPrice))) {
-      return res.status(400).json({ error: "maxPrice must be a number" });
+    if (
+      (maxPrice && Number.isNaN(Number(maxPrice))) ||
+      (minPrice && Number.isNaN(Number(minPrice)))
+    ) {
+      return res.status(400).json({ error: "minPrice and maxPrice must be numbers" });
     }
 
     const conditions = []; // the filter rules
@@ -34,6 +37,10 @@ router.get("/", async (req, res) => {
     if (artist) {
       values.push(artist);
       conditions.push(`artist = $${values.length}`);
+    }
+    if (minPrice) {
+      values.push(Math.round(Number(minPrice) * 100)); // dollars -> cents
+      conditions.push(`price_cents >= $${values.length}`);
     }
     if (maxPrice) {
       values.push(Math.round(Number(maxPrice) * 100)); // dollars -> cents

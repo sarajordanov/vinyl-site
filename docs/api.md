@@ -19,6 +19,7 @@ Optional query parameters:
 | `q` | `weeknd` | Search in title and artist |
 | `genre` | `Hip-Hop` | Only this genre |
 | `artist` | `Drake` | Only this artist |
+| `minPrice` | `20` | Price from this amount, in dollars |
 | `maxPrice` | `25` | Price up to this amount, in dollars |
 | `sort` | `price_desc` | One of `price_asc`, `price_desc`, `title`, `newest` |
 

@@ -60,3 +60,10 @@ test("an unknown album gives 404", async () => {
   const res = await request(app).get("/api/albums/does-not-exist");
   assert.equal(res.status, 404);
 });
+
+test("minPrice filter respects the limit", async () => {
+  const res = await request(app).get("/api/albums?minPrice=30");
+  assert.equal(res.status, 200);
+  assert.ok(res.body.length > 0);
+  assert.ok(res.body.every((a) => a.price_cents >= 3000));
+});
