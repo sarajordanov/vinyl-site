@@ -27,7 +27,6 @@ export default function Dropdown({ prefix = "", options, value, onChange, align 
     const up = below < wanted && above > below;
     const maxHeight = Math.max(120, Math.min(MENU_MAX, up ? above : below));
 
-    // Only update when something changed
     setPlacement((prev) =>
       prev.up === up && prev.maxHeight === maxHeight ? prev : { up, maxHeight }
     );
@@ -71,6 +70,12 @@ export default function Dropdown({ prefix = "", options, value, onChange, align 
     buttonRef.current.focus();
   }
 
+  // The position is set here, so it does not depend on any CSS rule
+  const menuStyle = {
+    maxHeight: placement.maxHeight,
+    ...(placement.up ? { top: "auto", bottom: "calc(100% + 8px)" } : {}),
+  };
+
   return (
     <div className="dd-disc" ref={rootRef}>
       <button
@@ -86,11 +91,7 @@ export default function Dropdown({ prefix = "", options, value, onChange, align 
       </button>
 
       {open && (
-        <ul
-          id={menuId}
-          className={`dd-disc__sub dd-disc__sub--${align} ${placement.up ? "dd-disc__sub--up" : ""}`}
-          style={{ maxHeight: placement.maxHeight }}
-        >
+        <ul id={menuId} className={`dd-disc__sub dd-disc__sub--${align}`} style={menuStyle}>
           {options.map((option) => (
             <li key={option.value}>
               <button

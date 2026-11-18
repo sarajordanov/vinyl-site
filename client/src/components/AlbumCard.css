@@ -11,7 +11,7 @@
   border-radius: 24px;
   font-family: var(--font-heading);
   font-size: 24px;
-  margin-bottom: 16px;
+ 
 }
 
 .card-info {
@@ -38,4 +38,69 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.card {
+  position: relative;
+}
+
+/* The art area holds the cover and the record behind it */
+.card-art {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.card-art .card-cover {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+}
+
+.card-record {
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  z-index: 0;
+  width: 92%;
+  aspect-ratio: 1;
+}
+
+.card-record,
+.card-art .card-cover {
+  transition: transform 0.45s ease;
+}
+
+/* Hover (mouse) and keyboard focus: lift, slide, roll the record out */
+@media (hover: hover) {
+  .card:hover {
+    z-index: 2;
+  }
+  .card:hover .card-art .card-cover {
+    transform: translateX(4px);
+  }
+  .card:hover .card-record {
+    transform: translateX(20%);
+  }
+}
+
+.card:focus-visible {
+  z-index: 2;
+  outline: 3px solid var(--lime);
+  outline-offset: 6px;
+}
+
+.card:focus-visible .card-art .card-cover {
+  transform: translate(-4%, -4px);
+}
+
+.card:focus-visible .card-record {
+  transform: translate(22%, -4px) rotate(200deg);
+}
+
+/* No sliding or spinning for people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .card-record,
+  .card-art .card-cover {
+    transition: none;
+  }
 }

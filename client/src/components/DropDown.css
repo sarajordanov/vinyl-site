@@ -23,7 +23,7 @@
 
 .dd-disc__btn:hover,
 .dd-disc__btn[aria-expanded="true"] {
-  background: var(--paper-hover);
+  background: var(--paper);
 }
 
 /* The little arrow, which flips when the menu is open */
@@ -52,9 +52,8 @@
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
-  z-index: 5;
+  z-index: 20;
   min-width: 100%;
-  max-height: 320px;
   overflow-y: auto;
   margin: 0;
   padding: 6px;
@@ -99,12 +98,5 @@
   .dd-disc__btn::after {
     transition: transform 0.2s ease, margin 0.2s ease;
   }
-}
-
-
-/* A menu that opens upward */
-.dd-disc__sub--up {
-  top: auto;
-  bottom: calc(100% + 8px);
 }
 

@@ -125,7 +125,7 @@
 .store-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 48px 32px;
+    gap: 48px 56px;
 }
 
 .store-grid .card-info {
@@ -236,4 +236,10 @@
 /* A visible line under the sidebar headings */
 .sidebar h2 {
   border-bottom: 1px solid var(--black);
+}
+
+/* Sort by: no color change on hover or when open */
+.results-bar .dd-disc .dd-disc__btn:hover,
+.results-bar .dd-disc .dd-disc__btn[aria-expanded="true"] {
+  background: var(--paper);
 }

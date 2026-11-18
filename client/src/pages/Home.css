@@ -55,10 +55,11 @@
 
 .row {
   display: flex;
-  gap: 40px;
+    gap: 64px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   padding-bottom: 16px;
+      padding-top: 44px;
 }
 
 .row .card {
@@ -365,4 +366,101 @@
 .drops-body .btn:hover {
   background: var(--paper);
   color: var(--black);
+}
+
+/* Hero stickers: grow and turn a little on hover */
+.hero .sticker {
+  cursor: pointer;
+  transition: rotate 0.9s ease-in-out, scale 0.9s ease-in-out;
+}
+
+@media (hover: hover) {
+  .hero .sticker:hover {
+    rotate: 180deg;
+    scale: 1.1;
+  }
+}
+
+/* The text block would otherwise sit on top of the stickers and block the hover.
+   Only the button keeps its pointer. */
+.hero-inner {
+  pointer-events: none;
+}
+
+.hero-inner .btn {
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .sticker {
+    transition: none;
+  }
+  .hero .sticker:hover {
+    rotate: none;
+    scale: 1;
+  }
+}
+
+/* The NEW! sticker: a springy pop on hover, no spinning */
+.hero .s4 {
+  transition: translate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (hover: hover) {
+  .hero .s4:hover {
+    rotate: 0deg;
+    translate: 0 -18px;
+    scale: 1.2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .s4 {
+    transition: none;
+  }
+  .hero .s4:hover {
+    translate: none;
+    scale: 1;
+  }
+}
+
+/* Exclusive Vinyl Drops: the record turns, the ticket pops */
+.drops-body .d2 {
+  cursor: pointer;
+  transition: rotate 0.9s ease-in-out, scale 0.9s ease-in-out;
+}
+
+.drops-body .ticket {
+  cursor: pointer;
+  transition: translate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+              rotate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (hover: hover) {
+  .drops-body .d2:hover {
+    rotate: 180deg;
+    scale: 1.1;
+  }
+
+  /* The ticket is tilted -8 degrees, so rotating +8 makes it straight */
+  .drops-body .ticket:hover {
+    rotate: 8deg;
+    translate: 0 -14px;
+    scale: 1.08;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drops-body .d2,
+  .drops-body .ticket {
+    transition: none;
+  }
+  .drops-body .d2:hover,
+  .drops-body .ticket:hover {
+    rotate: none;
+    translate: none;
+    scale: 1;
+  }
 }
