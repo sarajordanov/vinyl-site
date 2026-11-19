@@ -22,6 +22,8 @@ Optional query parameters:
 | `minPrice` | `20` | Price from this amount, in dollars |
 | `maxPrice` | `25` | Price up to this amount, in dollars |
 | `sort` | `price_desc` | One of `price_asc`, `price_desc`, `title`, `newest` |
+| `page` | `2` | Return one page of results. The total count is in the `X-Total-Count` header. Without it, all albums are returned. |
+| `limit` | `12` | Albums per page (default 12, maximum 50). Only used with `page`. |
 
 Parameters can be combined. Invalid `maxPrice` returns `400`.
 

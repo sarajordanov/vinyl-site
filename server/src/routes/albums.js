@@ -11,10 +11,10 @@ const sortOptions = {
   newest: "created_at DESC",
 };
 
-// GET /api/albums -> a list of albums, with optional search, filters and sorting
+// GET /api/albums -> a list of albums, with optional search, filters, sorting and pages
 router.get("/", async (req, res) => {
   try {
-    const { q, genre, artist, minPrice, maxPrice, sort } = req.query;
+    const { q, genre, artist, minPrice, maxPrice, sort, page, limit } = req.query;
 
     if (
       (maxPrice && Number.isNaN(Number(maxPrice))) ||
@@ -48,14 +48,33 @@ router.get("/", async (req, res) => {
     }
 
     const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
-    const orderBy = sortOptions[sort] ?? "artist ASC, title ASC";
+    // The id at the end keeps the order stable, so a record never jumps between pages
+    const orderBy = `${sortOptions[sort] ?? "artist ASC, title ASC"}, id`;
+
+    // Without ?page= the answer is the full list, as before.
+    // With ?page= we send one page, and the total in the X-Total-Count header.
+    const paginated = page !== undefined;
+    const params = [...values];
+    let paging = "";
+
+    if (paginated) {
+      const pageSize = Math.min(Math.max(parseInt(limit, 10) || 12, 1), 50);
+      const pageNumber = Math.max(parseInt(page, 10) || 1, 1);
+
+      const count = await pool.query(`SELECT COUNT(*) FROM albums ${where}`, values);
+      res.set("X-Total-Count", count.rows[0].count);
+
+      params.push(pageSize, (pageNumber - 1) * pageSize);
+      paging = `LIMIT $${params.length - 1} OFFSET $${params.length}`;
+    }
 
     const { rows } = await pool.query(
-      `SELECT id, slug, title, artist, genre, price_cents, format, section, featured, cover_url
+      `SELECT id, slug, title, artist, genre, price_cents, stock, format, section, featured, cover_url
        FROM albums
        ${where}
-       ORDER BY ${orderBy}`,
-      values
+       ORDER BY ${orderBy}
+       ${paging}`,
+      params
     );
     res.json(rows);
   } catch (error) {

@@ -3,8 +3,9 @@ import pool from "./db.js";
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 try {
-  const { rows } = await pool.query("SELECT id, title, artist FROM albums ORDER BY id");
-
+    const { rows } = await pool.query(
+    "SELECT id, title, artist FROM albums WHERE cover_url IS NULL ORDER BY id"
+  );
   for (const album of rows) {
     const term = encodeURIComponent(`${album.artist} ${album.title}`);
     const res = await fetch(`https://itunes.apple.com/search?term=${term}&entity=album&limit=1`);

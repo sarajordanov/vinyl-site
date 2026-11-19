@@ -67,3 +67,18 @@ test("minPrice filter respects the limit", async () => {
   assert.ok(res.body.length > 0);
   assert.ok(res.body.every((a) => a.price_cents >= 3000));
 });
+
+test("a page returns a limited number of albums and the total in a header", async () => {
+  const res = await request(app).get("/api/albums?page=1&limit=12");
+  assert.equal(res.status, 200);
+  assert.equal(res.body.length, 12);
+  assert.ok(Number(res.headers["x-total-count"]) >= 36);
+});
+
+test("different pages contain different albums", async () => {
+  const first = await request(app).get("/api/albums?page=1&limit=12");
+  const second = await request(app).get("/api/albums?page=2&limit=12");
+  const firstIds = new Set(first.body.map((a) => a.id));
+  assert.ok(second.body.length > 0);
+  assert.ok(second.body.every((a) => !firstIds.has(a.id)));
+});
